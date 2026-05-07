@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Moderno | Filial 36 SDO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --rojo: #ed1b2e; --oscuro: #231f20; }
+        body { font-family: 'Open Sans', Arial, sans-serif; margin: 0; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); min-height: 100vh; }
+        
+        nav { background: white; padding: 20px 5%; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid var(--rojo); }
+        .logo { font-weight: bold; color: var(--rojo); font-size: 24px; text-decoration: none; }
+
+        .form-card { max-width: 450px; margin: 40px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); }
+        .input-group { position: relative; margin-top: 20px; }
+        .input-group i { position: absolute; left: 15px; top: 40px; color: #888; }
+        .input-group input, .input-group select { width: 100%; padding: 12px 12px 12px 40px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 14px; }
+        
+        label { font-weight: bold; font-size: 13px; color: var(--oscuro); }
+        .btn-modern { background: var(--rojo); color: white; width: 100%; padding: 15px; border: none; border-radius: 8px; font-weight: bold; margin-top: 30px; cursor: pointer; font-size: 16px; box-shadow: 0 4px 15px rgba(237, 27, 46, 0.3); transition: 0.3s; }
+        .btn-modern:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(237, 27, 46, 0.4); }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">CRUZ ROJA <span style="color:var(--oscuro)">SDO</span></a>
+    </nav>
+
+    <div class="form-card">
+        <h2 style="text-align:center; margin-top:0;">Únete a la Filial 36</h2>
+        <p style="text-align:center; color:#666; font-size: 14px;">Forma parte del equipo de respuesta en Herrera.</p>
+
+        <form id="regForm">
+            <div class="input-group">
+                <label>Nombre Completo</label>
+                <i class="fas fa-user"></i>
+                <input type="text" id="nombre" placeholder="Nombre y Apellido" required>
+            </div>
+
+            <div class="input-group">
+                <label>Cédula Dominicana</label>
+                <i class="fas fa-id-card"></i>
+                <input type="text" id="cedula" placeholder="001-0000000-0" maxlength="13" required>
+            </div>
+
+            <div class="input-group">
+                <label>Sector de Residencia</label>
+                <i class="fas fa-map-marker-alt"></i>
+                <select id="sector">
+                    <option value="Herrera">Herrera</option>
+                    <option value="Arroyo Bonito">Arroyo Bonito</option>
+                    <option value="Hato Nuevo">Hato Nuevo</option>
+                </select>
+            </div>
+
+            <button type="button" class="btn-modern" onclick="validarYEnviar()">ENVIAR INSCRIPCIÓN</button>
+        </form>
+    </div>
+
+    <script>
+        function validarYEnviar() {
+            const n = document.getElementById('nombre').value;
+            const c = document.getElementById('cedula').value;
+            const s = document.getElementById('sector').value;
+
+            if(n && c) {
+                const mailto = `mailto:filial36@cruzroja.org.do?subject=Inscripción: ${n}&body=Solicitud para el sector: ${s}%0ACédula: ${c}`;
+                window.location.href = mailto;
+            } else {
+                alert("Por favor, audita los campos. Falta información crítica.");
+            }
+        }
+    </script>
+</body>
+</html>

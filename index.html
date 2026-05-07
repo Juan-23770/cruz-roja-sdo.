@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cruz Roja Dominicana | Filial 36 SDO</title>
+    <style>
+        :root { --rojo: #ed1b2e; --oscuro: #231f20; --gris: #f8f9fa; }
+        body { font-family: 'Open Sans', Arial, sans-serif; margin: 0; color: var(--oscuro); }
+        
+        /* Barra de contacto superior */
+        .top-bar { background: var(--oscuro); color: white; padding: 10px 5%; font-size: 13px; display: flex; justify-content: space-between; }
+        
+        /* Navegación */
+        nav { background: white; padding: 20px 5%; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid var(--rojo); }
+        .logo { font-weight: bold; color: var(--rojo); font-size: 24px; text-decoration: none; }
+        .menu a { margin-left: 20px; text-decoration: none; color: var(--oscuro); font-weight: 600; text-transform: uppercase; font-size: 14px; }
+
+        /* Sección Principal (Hero) */
+        .hero { 
+            background: #666; /* Color gris de fondo de tu foto */
+            height: 450px; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center;
+            padding: 0 10%;
+        }
+        .hero h2 { font-size: 50px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
+        .hero p { font-size: 18px; max-width: 700px; line-height: 1.4; }
+
+        /* Botón Rojo de la foto */
+        .btn-asistencia { 
+            background: var(--rojo); color: white; padding: 15px 40px; 
+            text-decoration: none; border-radius: 4px; font-weight: bold; 
+            font-size: 18px; border: 2px solid white; margin-top: 20px;
+            transition: 0.3s;
+        }
+        .btn-asistencia:hover { background: #b30000; }
+
+        /* Tarjetas inferiores */
+        .servicios { padding: 40px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card { background: white; padding: 30px; text-align: center; }
+        .card h3 { color: #333; margin-bottom: 15px; }
+        .card p { color: #666; font-size: 14px; line-height: 1.5; }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span>📍 Herrera, Santo Domingo Oeste, RD</span>
+        <span>📞 (809) 555-0136 | filial36@cruzroja.org.do</span>
+    </div>
+
+    <nav>
+        <a href="index.html" class="logo">CRUZ ROJA <span style="color:var(--oscuro)">SDO</span></a>
+        <div class="menu">
+            <a href="index.html">INICIO</a>
+            <a href="nosotros.html">NOSOTROS</a>
+            <a href="servicios.html">SERVICIOS</a>
+            <a href="registro.html">VOLUNTARIADO</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h2>FILIAL 36 - SDO</h2>
+        <p>Prevención, socorro y gestión de riesgos en Hato Nuevo, Arroyo Bonito y toda Herrera.</p>
+        <a href="servicios.html" class="btn-asistencia">SOLICITAR ASISTENCIA</a>
+    </div>
+
+    <div class="servicios">
+        <div class="card">
+            <h3>Gestión de Riesgos</h3>
+            <p>Auditoría y control de inundaciones en zonas vulnerables de SDO.</p>
+        </div>
+        <div class="card">
+            <h3>Capacitación</h3>
+            <p>Cursos de primeros auxilios y respuesta ante desastres.</p>
+        </div>
+        <div class="card">
+            <h3>Juventud</h3>
+            <p>Únete a nuestra red de voluntarios y transforma tu comunidad.</p>
+        </div>
+    </div>
+
+</body>
+</html>
