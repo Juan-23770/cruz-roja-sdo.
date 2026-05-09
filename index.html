@@ -3,123 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cruz Roja Dominicana | Filial 36 Herrera - SDO</title>
+    <title>Cruz Roja Filial 36 Herrera</title>
     <style>
-        :root { --rojo: #ed1b2e; --oscuro: #231f20; --gris-claro: #f8f9fa; }
+        :root { --rojo: #ed1b2e; --oscuro: #231f20; }
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: sans-serif; margin: 0; padding-top: 100px; }
         
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; color: var(--oscuro); line-height: 1.6; }
-
-        /* BARRA SUPERIOR E IDENTIDAD */
-        .top-bar { background: var(--oscuro); color: white; padding: 10px 5%; font-size: 13px; display: flex; justify-content: space-between; }
-        
-        nav { background: white; padding: 15px 5%; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid var(--rojo); position: sticky; top: 0; z-index: 1000; }
-        
-        .logo-container { display: flex; align-items: center; text-decoration: none; }
-        .logo-img { height: 80px; width: auto; }
-
-        .menu a { margin-left: 20px; text-decoration: none; color: var(--oscuro); font-weight: 600; text-transform: uppercase; font-size: 14px; }
-        .menu a:hover { color: var(--rojo); }
-
-        /* HERO SECTION - PORTADA */
-        .hero { 
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://hoy.com.do/wp-content/uploads/2022/11/Inundaciones-SDO.jpg');
-            background-size: cover; background-position: center; height: 400px;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center;
+        /* NAVEGACIÓN FIJA */
+        nav { 
+            background: white; padding: 10px 5%; display: flex; align-items: center; justify-content: space-between; 
+            border-bottom: 3px solid var(--rojo); position: fixed; top: 0; width: 100%; z-index: 1000; 
         }
-        .hero h1 { font-size: 45px; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
-        .btn-asistencia { background: var(--rojo); color: white; padding: 15px 30px; text-decoration: none; font-weight: bold; margin-top: 20px; border-radius: 5px; text-transform: uppercase; }
-
-        /* MATRIZ DE RIESGO */
-        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-        .section-title { border-left: 5px solid var(--rojo); padding-left: 15px; color: var(--oscuro); margin-bottom: 30px; }
+        .menu a { margin-left: 15px; text-decoration: none; color: var(--oscuro); font-weight: bold; font-size: 13px; }
         
-        table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 40px; }
-        th { background: var(--oscuro); color: white; padding: 15px; text-align: left; }
-        td { padding: 15px; border-bottom: 1px solid #ddd; }
-        .badge { padding: 5px 10px; border-radius: 4px; color: white; font-weight: bold; font-size: 12px; }
-
-        /* GRID DE SERVICIOS */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .card { background: var(--gris-claro); padding: 25px; border-radius: 8px; border-top: 4px solid var(--rojo); }
-
-        /* FOOTER */
-        footer { background: var(--oscuro); color: #ccc; padding: 40px 5%; text-align: center; margin-top: 50px; }
+        /* SECCIONES */
+        section { padding: 60px 10%; min-height: 400px; border-bottom: 1px solid #ddd; }
+        .hero { background: #eee; text-align: center; padding: 100px 20px; }
+        .btn-rojo { background: var(--rojo); color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; margin-top: 10px; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 12px; text-align: left; }
+        th { background: #f4f4f4; }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">
-        <span>📍 Herrera, Santo Domingo Oeste, RD</span>
-        <span>📞 Emergencias: 9-1-1 | Filial: (809) 555-0136</span>
-    </div>
-
+    <!-- MENÚ CON ENLACES CORREGIDOS -->
     <nav>
-        <a href="index.html" class="logo-container">
-            <img src="https://m.media-amazon.com/images/I/41-M+uT2ZJL.jpg" alt="Cruz Roja Filial Herrera" class="logo-img">
+        <a href="#inicio">
+            <img src="https://m.media-amazon.com/images/I/41-M+uT2ZJL.jpg" style="height: 60px;">
         </a>
         <div class="menu">
-            <a href="#inicio">Inicio</a>
-            <a href="#riesgos">Matriz de Riesgo</a>
-            <a href="#servicios">Servicios</a>
-            <a href="#contacto">Contacto</a>
+            <a href="#inicio">INICIO</a>
+            <a href="#nosotros">NOSOTROS</a>
+            <a href="#riesgos">RIESGOS</a>
+            <a href="#voluntariado">VOLUNTARIADO</a>
+            <a href="#contacto">CONTACTO</a>
         </div>
     </nav>
 
-    <div class="hero" id="inicio">
-        <h1>FILIAL 36 - SDO</h1>
-        <p>Prevención, socorro y gestión de riesgos en Hato Nuevo, Arroyo Bonito y toda Herrera.</p>
-        <a href="mailto:filial36@cruzroja.org.do" class="btn-asistencia">SOLICITAR ASISTENCIA</a>
-    </div>
+    <!-- SECCIÓN INICIO -->
+    <section class="hero" id="inicio">
+        <h1>FILIAL 36 - HERRERA</h1>
+        <p>Gestión de riesgos en Santo Domingo Oeste.</p>
+        <!-- BOTÓN ASISTENCIA -->
+        <a href="mailto:filial36@cruzroja.org.do" class="btn-rojo">SOLICITAR ASISTENCIA</a>
+    </section>
 
-    <div class="container" id="riesgos">
-        <h2 class="section-title">Matriz Técnica de Vulnerabilidad - Vaguada</h2>
+    <!-- SECCIÓN NOSOTROS -->
+    <section id="nosotros">
+        <h2>NOSOTROS</h2>
+        <p>Trabajamos por la resiliencia de Herrera, Arroyo Bonito y Hato Nuevo.</p>
+    </section>
+
+    <!-- SECCIÓN RIESGOS (MATRIZ) -->
+    <section id="riesgos">
+        <h2>MATRIZ DE RIESGO</h2>
         <table>
-            <thead>
-                <tr>
-                    <th>Sector Critico</th>
-                    <th>Amenaza Identificada</th>
-                    <th>Nivel de Riesgo</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Arroyo Bonito</strong></td>
-                    <td>Crecida de Cañada / Inundación</td>
-                    <td><span class="badge" style="background: #ed1b2e;">CRÍTICO</span></td>
-                </tr>
-                <tr>
-                    <td><strong>Hato Nuevo</strong></td>
-                    <td>Saturación de suelos / Deslizamientos</td>
-                    <td><span class="badge" style="background: orange;">ALTO</span></td>
-                </tr>
-                <tr>
-                    <td><strong>Herrera (Zonas Bajas)</strong></td>
-                    <td>Drenaje Pluvial Obstruido</td>
-                    <td><span class="badge" style="background: #ccac00;">MEDIO</span></td>
-                </tr>
-            </tbody>
+            <tr><th>Sector</th><th>Amenaza</th><th>Riesgo</th></tr>
+            <tr><td>Arroyo Bonito</td><td>Inundación</td><td>Crítico</td></tr>
+            <tr><td>Hato Nuevo</td><td>Deslizamiento</td><td>Alto</td></tr>
+            <tr><td>Tanque Azul</td><td>Drenaje</td><td>Medio</td></tr>
         </table>
+    </section>
 
-        <div class="grid" id="servicios">
-            <div class="card">
-                <h3>Gestión de Riesgos</h3>
-                <p>Auditoría y control de zonas vulnerables de inundaciones en Herrera.</p>
-            </div>
-            <div class="card">
-                <h3>Capacitación</h3>
-                <p>Cursos de primeros auxilios y respuesta ante desastres para la comunidad.</p>
-            </div>
-            <div class="card">
-                <h3>Juventud</h3>
-                <p>Únete a nuestra red de voluntarios y transforma tu sector en SDO.</p>
-            </div>
-        </div>
-    </div>
+    <!-- SECCIÓN VOLUNTARIADO -->
+    <section id="voluntariado">
+        <h2>VOLUNTARIADO</h2>
+        <p>Únete a la Filial 36 de Santo Domingo Oeste.</p>
+    </section>
 
-    <footer id="contacto">
-        <img src="https://m.media-amazon.com/images/I/41-M+uT2ZJL.jpg" style="height: 50px; filter: brightness(0) invert(1); margin-bottom: 20px;">
-        <p>© 2026 Cruz Roja Dominicana - Filial 36 Herrera</p>
-        <p>Supervisado por JC TECH - Gestión de Sistemas</p>
+    <!-- SECCIÓN CONTACTO -->
+    <section id="contacto">
+        <h2>CONTACTO</h2>
+        <p>📍 Sector Herrera, SDO.</p>
+        <p>📞 (809) 555-0136</p>
+    </section>
+
+    <footer>
+        <p style="text-align:center; padding: 20px;">© 2026 Cruz Roja Herrera - JC TECH</p>
     </footer>
 
 </body>
