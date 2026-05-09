@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cruz Roja · Filial 36 Herrera</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rojo:    #D7182A;
+      --rojo-dark: #9e0f1c;
+      --blanco:  #FAFAF8;
+      --gris:    #F2F0ED;
+      --gris-med: #C8C3BB;
+      --oscuro:  #1A1614;
+      --texto:   #2E2825;
+      --sombra:  0 4px 32px rgba(0,0,0,.12);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background: var(--blanco);
+      color: var(--texto);
+      padding-top: 80px;
+    }
+
+    /* ── SCROLLBAR ─────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--gris); }
+    ::-webkit-scrollbar-thumb { background: var(--rojo); border-radius: 3px; }
+
+    /* ── NAV ────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+      background: white;
+      border-bottom: 3px solid var(--rojo);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 80px;
+      box-shadow: 0 2px 16px rgba(0,0,0,.07);
+    }
+    .nav-logo img { height: 56px; display: block; }
+    .nav-brand {
+      display: flex; flex-direction: column; line-height: 1.1;
+    }
+    .nav-brand strong {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 17px; font-weight: 900; letter-spacing: .5px; color: var(--rojo);
+    }
+    .nav-brand span {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; font-weight: 600; color: #888; letter-spacing: 1px; text-transform: uppercase;
+    }
+    .nav-left { display: flex; align-items: center; gap: 14px; }
+    .menu { display: flex; gap: 4px; }
+    .menu a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;
+      text-decoration: none; color: var(--oscuro);
+      padding: 6px 10px; border-radius: 3px;
+      transition: background .2s, color .2s;
+    }
+    .menu a:hover { background: var(--rojo); color: white; }
+    .btn-nav {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 13px; letter-spacing: 1px; text-transform: uppercase;
+      background: var(--rojo); color: white;
+      padding: 9px 18px; border-radius: 4px; text-decoration: none;
+      transition: background .2s;
+    }
+    .btn-nav:hover { background: var(--rojo-dark); }
+
+    /* ── HERO ───────────────────────────────────── */
+    #inicio {
+      min-height: 92vh;
+      display: flex; align-items: center;
+      background: var(--oscuro);
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(215,24,42,.22) 0%, transparent 70%),
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 38px,
+          rgba(255,255,255,.02) 38px,
+          rgba(255,255,255,.02) 39px
+        );
+    }
+    .hero-cross {
+      position: absolute; right: -60px; top: 50%; transform: translateY(-50%);
+      font-size: 420px; font-weight: 900; color: rgba(215,24,42,.08);
+      font-family: 'Barlow Condensed', sans-serif;
+      user-select: none; pointer-events: none; line-height: 1;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 10%;
+      max-width: 780px;
+      animation: fadeUp .9s ease both;
+    }
+    .hero-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--rojo); margin-bottom: 18px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 40px; height: 2px; background: var(--rojo);
+    }
+    h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 900; line-height: .95; text-transform: uppercase;
+      color: white; margin-bottom: 24px;
+    }
+    h1 em { color: var(--rojo); font-style: normal; }
+    .hero-sub {
+      font-size: 18px; color: rgba(255,255,255,.7); line-height: 1.7;
+      max-width: 520px; margin-bottom: 40px;
+    }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 15px; letter-spacing: 1.5px; text-transform: uppercase;
+      background: var(--rojo); color: white;
+      padding: 14px 28px; border-radius: 4px; text-decoration: none;
+      transition: background .2s, transform .15s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: var(--rojo-dark); transform: translateY(-2px); }
+    .btn-outline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 15px; letter-spacing: 1.5px; text-transform: uppercase;
+      background: transparent; color: white; border: 2px solid rgba(255,255,255,.3);
+      padding: 14px 28px; border-radius: 4px; text-decoration: none;
+      transition: border-color .2s, transform .15s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-outline:hover { border-color: white; transform: translateY(-2px); }
+    .hero-stats {
+      position: absolute; bottom: 40px; left: 10%; right: 10%;
+      display: flex; gap: 40px; z-index: 2;
+      animation: fadeUp .9s .3s ease both;
+    }
+    .stat { border-left: 3px solid var(--rojo); padding-left: 16px; }
+    .stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 34px; font-weight: 900; color: white; line-height: 1;
+    }
+    .stat-label {
+      font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+      color: rgba(255,255,255,.5); margin-top: 3px;
+    }
+
+    /* ── SECCIÓN BASE ───────────────────────────── */
+    section { padding: 90px 10%; }
+    .section-header { margin-bottom: 50px; }
+    .section-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--rojo); margin-bottom: 10px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-tag::before { content:''; display:block; width:30px; height:2px; background:var(--rojo); }
+    h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(32px, 5vw, 52px); font-weight: 900;
+      text-transform: uppercase; line-height: 1; color: var(--oscuro);
+    }
+    .section-lead {
+      font-size: 17px; color: #666; line-height: 1.8; max-width: 620px; margin-top: 14px;
+    }
+
+    /* ── NOSOTROS ───────────────────────────────── */
+    #nosotros { background: var(--gris); }
+    .nosotros-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; margin-top: 48px;
+    }
+    .card {
+      background: white; border-radius: 6px;
+      padding: 36px 30px;
+      box-shadow: var(--sombra);
+      border-top: 4px solid var(--rojo);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,.14); }
+    .card-icon {
+      font-size: 36px; margin-bottom: 18px;
+    }
+    .card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px; font-weight: 900; text-transform: uppercase;
+      color: var(--oscuro); margin-bottom: 10px;
+    }
+    .card p { font-size: 15px; color: #666; line-height: 1.7; }
+
+    /* ── RIESGOS ────────────────────────────────── */
+    #riesgos { background: white; }
+    .matriz-wrap { margin-top: 40px; overflow-x: auto; border-radius: 8px; box-shadow: var(--sombra); }
+    table { width: 100%; border-collapse: collapse; }
+    thead tr { background: var(--oscuro); color: white; }
+    th {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      padding: 18px 20px; text-align: left;
+    }
+    td { padding: 15px 20px; font-size: 15px; border-bottom: 1px solid #eee; }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: #fef6f7; }
+    .badge {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 20px;
+    }
+    .critico  { background: #fde8ea; color: var(--rojo-dark); }
+    .alto     { background: #fef3e2; color: #c47a00; }
+    .medio    { background: #e6f6ec; color: #1e7a3e; }
+    .bajo     { background: #e8f0fe; color: #1a56b0; }
+
+    .sector-icon { font-size: 18px; margin-right: 8px; vertical-align: middle; }
+
+    /* ── VOLUNTARIADO ───────────────────────────── */
+    #voluntariado { background: var(--rojo); color: white; }
+    #voluntariado .section-tag { color: rgba(255,255,255,.6); }
+    #voluntariado .section-tag::before { background: rgba(255,255,255,.4); }
+    #voluntariado h2 { color: white; }
+    #voluntariado .section-lead { color: rgba(255,255,255,.8); }
+    .vol-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 48px;
+    }
+    .vol-card {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 6px; padding: 32px 28px;
+      transition: background .25s;
+    }
+    .vol-card:hover { background: rgba(255,255,255,.15); }
+    .vol-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px; font-weight: 900; text-transform: uppercase;
+      color: white; margin-bottom: 8px;
+    }
+    .vol-card p { font-size: 14px; color: rgba(255,255,255,.75); line-height: 1.7; }
+    .vol-cta { margin-top: 48px; display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .btn-blanco {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 15px; letter-spacing: 1.5px; text-transform: uppercase;
+      background: white; color: var(--rojo);
+      padding: 14px 28px; border-radius: 4px; text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-blanco:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,.2); }
+    .vol-note { font-size: 13px; color: rgba(255,255,255,.55); font-style: italic; }
+
+    /* ── CONTACTO ───────────────────────────────── */
+    #contacto { background: var(--oscuro); color: white; }
+    #contacto .section-tag { color: var(--rojo); }
+    #contacto h2 { color: white; }
+    .contacto-grid {
+      display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; margin-top: 50px; align-items: start;
+    }
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 18px; margin-bottom: 30px;
+    }
+    .contact-icon {
+      width: 46px; height: 46px; flex-shrink: 0;
+      background: var(--rojo); border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .contact-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,.4); margin-bottom: 4px;
+    }
+    .contact-value { font-size: 16px; color: white; }
+    .contact-value a { color: white; text-decoration: none; }
+    .contact-value a:hover { color: var(--rojo); text-decoration: underline; }
+    .horario-table { width: 100%; }
+    .horario-table td {
+      padding: 8px 0; font-size: 14px; color: rgba(255,255,255,.7);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .horario-table td:first-child { color: rgba(255,255,255,.4); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+    .horario-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px; font-weight: 700; color: white; text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: 16px;
+    }
+
+    /* ── FOOTER ─────────────────────────────────── */
+    footer {
+      background: #0e0c0b;
+      padding: 24px 10%;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    }
+    footer p {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px; letter-spacing: 1px; color: rgba(255,255,255,.3);
+    }
+    .footer-divider { color: var(--rojo); }
+
+    /* ── SCROLL TO TOP ──────────────────────────── */
+    #back-top {
+      position: fixed; bottom: 30px; right: 30px; z-index: 999;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--rojo); color: white; border: none; cursor: pointer;
+      font-size: 18px; display: none; align-items: center; justify-content: center;
+      box-shadow: 0 4px 14px rgba(215,24,42,.4);
+      transition: background .2s, transform .15s;
+    }
+    #back-top:hover { background: var(--rojo-dark); transform: translateY(-3px); }
+    #back-top.visible { display: flex; }
+
+    /* ── ANIMATIONS ─────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ─────────────────────────────── */
+    @media(max-width: 860px) {
+      .nosotros-grid, .vol-grid, .contacto-grid { grid-template-columns: 1fr; }
+      .hero-stats { flex-wrap: wrap; gap: 20px; bottom: 20px; }
+      .menu { display: none; }
+    }
+    @media(max-width: 560px) {
+      nav { padding: 0 4%; }
+      section { padding: 60px 6%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-left">
+      <a class="nav-logo" href="#inicio">
+        <img src="https://m.media-amazon.com/images/I/41-M+uT2ZJL.jpg" alt="Cruz Roja Logo">
+      </a>
+      <div class="nav-brand">
+        <strong>Cruz Roja Dominicana</strong>
+        <span>Filial 36 · Herrera</span>
+      </div>
+    </div>
+    <div class="menu">
+      <a href="#inicio">Inicio</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#riesgos">Riesgos</a>
+      <a href="#voluntariado">Voluntariado</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a href="mailto:filial36@cruzroja.org.do" class="btn-nav">Solicitar Asistencia</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="inicio">
+    <div class="hero-bg"></div>
+    <div class="hero-cross">✛</div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Cruz Roja Dominicana &mdash; Filial 36</div>
+      <h1>Herrera<br><em>Responde.</em></h1>
+      <p class="hero-sub">
+        Gestión de riesgos, socorro y resiliencia comunitaria en Herrera,
+        Arroyo Bonito y Hato Nuevo, Santo Domingo Oeste.
+      </p>
+      <div class="hero-ctas">
+        <a href="mailto:filial36@cruzroja.org.do" class="btn-primary">
+          🚨 Solicitar Asistencia
+        </a>
+        <a href="#voluntariado" class="btn-outline">
+          🤝 Ser Voluntario
+        </a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">36</div>
+        <div class="stat-label">Filial SDO</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Sectores cubiertos</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Disponibilidad</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section id="nosotros">
+    <div class="section-header reveal">
+      <div class="section-tag">Quiénes somos</div>
+      <h2>Filial 36 Herrera</h2>
+      <p class="section-lead">
+        Somos el brazo operativo de la Cruz Roja Dominicana en el municipio de
+        Santo Domingo Oeste. Trabajamos para fortalecer la resiliencia de las
+        comunidades de Herrera, Arroyo Bonito y Hato Nuevo ante desastres
+        naturales y emergencias.
+      </p>
+    </div>
+    <div class="nosotros-grid">
+      <div class="card reveal">
+        <div class="card-icon">🏥</div>
+        <h3>Primeros Auxilios</h3>
+        <p>Brigadas capacitadas para atención prehospitalaria, apoyo en emergencias médicas y cobertura de eventos comunitarios.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">🌊</div>
+        <h3>Gestión de Riesgos</h3>
+        <p>Identificación, mapeo y monitoreo de amenazas en zonas vulnerables. Preparación comunitaria ante inundaciones y deslizamientos.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">📦</div>
+        <h3>Asistencia Humanitaria</h3>
+        <p>Distribución de ayuda en situaciones de emergencia, apoyo a familias damnificadas y coordinación con autoridades locales.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIESGOS -->
+  <section id="riesgos">
+    <div class="section-header reveal">
+      <div class="section-tag">Evaluación técnica</div>
+      <h2>Matriz de Riesgo</h2>
+      <p class="section-lead">
+        Levantamiento actualizado de amenazas identificadas por los equipos
+        técnicos de la Filial 36 en los sectores bajo su cobertura operativa.
+      </p>
+    </div>
+    <div class="matriz-wrap reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>Sector</th>
+            <th>Amenaza Principal</th>
+            <th>Población Expuesta</th>
+            <th>Nivel de Riesgo</th>
+            <th>Protocolo Activo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="sector-icon">🏘️</span><strong>Arroyo Bonito</strong></td>
+            <td>Inundación / Desbordamiento</td>
+            <td>~4,200 hab.</td>
+            <td><span class="badge critico">Crítico</span></td>
+            <td>Plan evacuación P-01</td>
+          </tr>
+          <tr>
+            <td><span class="sector-icon">⛰️</span><strong>Hato Nuevo</strong></td>
+            <td>Deslizamiento de tierra</td>
+            <td>~2,800 hab.</td>
+            <td><span class="badge alto">Alto</span></td>
+            <td>Monitoreo activo M-02</td>
+          </tr>
+          <tr>
+            <td><span class="sector-icon">🏗️</span><strong>Tanque Azul</strong></td>
+            <td>Deficiencia de drenaje</td>
+            <td>~1,600 hab.</td>
+            <td><span class="badge medio">Medio</span></td>
+            <td>Alerta temprana D-03</td>
+          </tr>
+          <tr>
+            <td><span class="sector-icon">🏙️</span><strong>Herrera Centro</strong></td>
+            <td>Congestión vial / accidentes</td>
+            <td>~8,500 hab.</td>
+            <td><span class="badge medio">Medio</span></td>
+            <td>Brigada móvil B-01</td>
+          </tr>
+          <tr>
+            <td><span class="sector-icon">🌿</span><strong>Zona Verde SDO</strong></td>
+            <td>Incendio vegetación</td>
+            <td>~900 hab.</td>
+            <td><span class="badge bajo">Bajo</span></td>
+            <td>Vigilancia V-04</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- VOLUNTARIADO -->
+  <section id="voluntariado">
+    <div class="section-header reveal">
+      <div class="section-tag">Únete</div>
+      <h2>Sé Parte del<br>Cambio</h2>
+      <p class="section-lead">
+        La Filial 36 necesita voluntarios comprometidos con el servicio humanitario.
+        No se requiere experiencia previa — nosotros te formamos.
+      </p>
+    </div>
+    <div class="vol-grid reveal">
+      <div class="vol-card">
+        <h3>🚑 Socorristas</h3>
+        <p>Aprende primeros auxilios básicos y avanzados. Participa en brigadas de emergencia y cobertura de eventos. Certificación Cruz Roja Dominicana incluida.</p>
+      </div>
+      <div class="vol-card">
+        <h3>📊 Gestión de Riesgos</h3>
+        <p>Colabora en el mapeo comunitario, talleres de preparación y sistemas de alerta temprana en los barrios de Santo Domingo Oeste.</p>
+      </div>
+      <div class="vol-card">
+        <h3>📦 Logística & Ayuda</h3>
+        <p>Apoya en la organización, almacenamiento y distribución de insumos humanitarios durante emergencias y activaciones.</p>
+      </div>
+      <div class="vol-card">
+        <h3>📣 Comunicación</h3>
+        <p>Contribuye en la difusión de información preventiva, redes sociales y campañas educativas en la comunidad.</p>
+      </div>
+    </div>
+    <div class="vol-cta reveal">
+      <a href="mailto:filial36@cruzroja.org.do?subject=Quiero ser voluntario" class="btn-blanco">
+        ✉️ Inscribirme como Voluntario
+      </a>
+      <p class="vol-note">Completamente gratuito · Capacitación incluida · Todas las edades (+16)</p>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="section-header reveal">
+      <div class="section-tag">Comunicación</div>
+      <h2>Contacto</h2>
+    </div>
+    <div class="contacto-grid">
+      <div class="reveal">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Ubicación</div>
+            <div class="contact-value">Sector Herrera, Santo Domingo Oeste<br>República Dominicana</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Teléfono</div>
+            <div class="contact-value">
+              <a href="tel:+18095550136">(809) 555-0136</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label">Correo Electrónico</div>
+            <div class="contact-value">
+              <a href="mailto:filial36@cruzroja.org.do">filial36@cruzroja.org.do</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🚨</div>
+          <div>
+            <div class="contact-label">Emergencias</div>
+            <div class="contact-value">
+              <a href="tel:+18095550136">Línea directa 24/7</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="horario-title">Horario de Oficina</div>
+        <table class="horario-table">
+          <tr><td>Lunes – Viernes</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Sábado</td><td>8:00 AM – 12:00 PM</td></tr>
+          <tr><td>Domingo</td><td>Emergencias únicamente</td></tr>
+          <tr><td>Días feriados</td><td>Guardia operativa activa</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Cruz Roja Dominicana <span class="footer-divider">·</span> Filial 36 Herrera</p>
+    <p>Desarrollado por <strong style="color:rgba(255,255,255,.5)">JC TECH</strong></p>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <button id="back-top" aria-label="Volver arriba" title="Volver arriba">▲</button>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => io.observe(el));
+
+    // Back to top
+    const btn = document.getElementById('back-top');
+    window.addEventListener('scroll', () => {
+      btn.classList.toggle('visible', window.scrollY > 400);
+    });
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Active nav link highlight
+    const sections = document.querySelectorAll('section[id]');
+    const links = document.querySelectorAll('.menu a');
+    const navIO = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.style.background = '');
+          const active = document.querySelector(`.menu a[href="#${e.target.id}"]`);
+          if (active) active.style.background = 'var(--rojo)';
+          if (active) active.style.color = 'white';
+        }
+      });
+    }, { rootMargin: '-40% 0px -40% 0px' });
+    sections.forEach(s => navIO.observe(s));
+  </script>
+</body>
+</html>
