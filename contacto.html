@@ -1,6 +1,43 @@
-<div class="mapa-container">
-    <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15133.565814545638!2d-70.0033486!3d18.4772186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf89f66085a53d%3A0xc66579637c35582c!2sHerrera%2C%20Santo%20Domingo!5e0!3m2!1ses!2sdo!4v1715000000000!5m2!1ses!2sdo" 
-        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
-    </iframe>
-</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Contacto | Filial Herrera</title>
+    <style>
+        :root { --rojo: #ed1b2e; --oscuro: #231f20; }
+        body { font-family: Arial, sans-serif; margin: 0; background: #f4f4f4; }
+        nav { background: white; padding: 15px 5%; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid var(--rojo); }
+        .container { max-width: 1100px; margin: 40px auto; padding: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .info-card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .mapa-container { height: 450px; border-radius: 8px; overflow: hidden; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <img src="https://m.media-amazon.com/images/I/41-M+uT2ZJL.jpg" alt="Logo Filial Herrera" style="height: 70px;">
+        <div class="menu">
+            <a href="index.html" style="margin-left:20px; text-decoration:none; color:var(--oscuro); font-weight:bold;">INICIO</a>
+            <a href="servicios.html" style="margin-left:20px; text-decoration:none; color:var(--oscuro); font-weight:bold;">SERVICIOS</a>
+            <a href="contacto.html" style="margin-left:20px; text-decoration:none; color:var(--rojo); font-weight:bold;">CONTACTO</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="info-card">
+            <h2 style="color:var(--rojo)">Ponte en contacto</h2>
+            <p><strong>Ubicación:</strong> Santo Domingo Oeste, Sector Herrera.</p>
+            <p><strong>Teléfono:</strong> (809) 555-0136</p>
+            <p><strong>Email:</strong> filial36@cruzroja.org.do</p>
+            <hr>
+            <p>Horario de atención: Lunes a Viernes de 8:00 AM a 5:00 PM</p>
+        </div>
+
+        <div class="mapa-container">
+            <!-- Aquí va el iframe que ya tienes en tu foto -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15133.565!2d-70.0033!3d18.4772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf89f66085a53d%3A0xc66579637c35582c!2sHerrera%2C%20Santo%20Domingo!5e0!3m2!1ses!2sdo!4v1715000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+</body>
+</html>
